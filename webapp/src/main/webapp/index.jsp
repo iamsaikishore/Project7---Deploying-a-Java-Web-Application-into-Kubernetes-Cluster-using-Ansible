@@ -42,11 +42,15 @@
     <br>
     <h2> App Status  : Up & Running !!! </h2>
     <h2> Image       : iamsaikishore/IMAGE_NAME </h2>
-    <h2> Hostname    : hostname
+    <h2> Hostname    : <span id="hostname"></span> </h2>
     <br>
     <div class="color-box blue"></div>
     <div class="color-box red"></div>
     <div class="color-box green"></div>
     <div class="color-box yellow"></div>
     <div class="color-box purple"></div>
+    <script>
+      var hostname = window.location.hostname;
+       document.getElementById("hostname").innerHTML = hostname;
+    </script>
  </html>
