@@ -40,8 +40,9 @@
 
     <br>
     <br>
-    <h2> App Status  : Up & Running ❤!!! </h2>
+    <h2> App Status  : Up & Running !!! </h2>
     <h2> Image       : iamsaikishore/IMAGE_NAME </h2>
+    <h2> Hostname    : hostname
     <br>
     <div class="color-box blue"></div>
     <div class="color-box red"></div>
