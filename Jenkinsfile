@@ -14,12 +14,13 @@ pipeline {
 
         stage('CODE CHECKOUT') {
             steps {
-                git 'https://github.com/iamsaikishore/Project7---Deploying-a-Java-Web-Application-into-Kubernetes-Cluster-using-Ansible.git'
+                git branch: 'main', url: 'https://github.com/iamsaikishore/Project7---Deploying-a-Java-Web-Application-into-Kubernetes-Cluster-using-Ansible.git'
             }
         }
         
         stage('MODIFIED IMAGE TAG') {
             steps {
+                
                 sh '''
                    sed "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
                    sed -i "s/image-name:latest/$JOB_NAME:v1.$BUILD_ID/g" playbooks/dep_svc.yml
@@ -32,7 +33,7 @@ pipeline {
             steps {
                 sh 'mvn clean install package'
             }
-        } 
+        }
         
         stage('SONAR SCANNER') {
             environment {
@@ -41,10 +42,10 @@ pipeline {
             steps {
                 sh 'mvn sonar:sonar -Dsonar.projectName=$JOB_NAME \
                     -Dsonar.projectKey=$JOB_NAME \
-                    -Dsonar.host.url=http://172.31.84.238:9000 \
+                    -Dsonar.host.url=https://sonar.kishq.co \
                     -Dsonar.token=$sonar_token'
             }
-        } 
+        }
         
         stage('COPY JAR & DOCKERFILE') {
             steps {
@@ -58,6 +59,7 @@ pipeline {
             dockerhub_pass = credentials('DOCKERHUB_PASS')
             }    
             steps {
+                
                 sh 'ansible-playbook playbooks/push_dockerhub.yml \
                     --extra-vars "JOB_NAME=$JOB_NAME" \
                     --extra-vars "BUILD_ID=$BUILD_ID" \
@@ -71,7 +73,7 @@ pipeline {
                 sh 'ansible-playbook playbooks/create_pod_on_eks.yml \
                     --extra-vars "JOB_NAME=$JOB_NAME"'
             }            
-        }          
-
+        }
+        
     }
-}      
+}
