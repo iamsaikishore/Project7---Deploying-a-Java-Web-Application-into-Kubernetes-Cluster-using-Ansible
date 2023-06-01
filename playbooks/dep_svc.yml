@@ -52,4 +52,5 @@ spec:
   - name: https
     port: 443
     targetPort: 8081
+    nodePort: 31200
 
