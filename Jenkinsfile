@@ -2,7 +2,6 @@ pipeline {
     agent any
     environment {
       PATH = "$PATH:/opt/apache-maven-3.9.1/bin"
-      JOB_NAME = echo $JOB_NAME | tr [:upper:] [:lower:]
     }
     
     stages {
