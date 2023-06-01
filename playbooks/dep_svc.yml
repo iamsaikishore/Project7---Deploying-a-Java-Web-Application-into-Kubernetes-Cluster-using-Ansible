@@ -1,9 +1,9 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: my-app
+  name: kishq-app
   labels:
-    app: my-app
+    app: kishq-app
 spec:
   replicas: 2
   strategy:
@@ -13,14 +13,14 @@ spec:
       maxUnavailable: 0
   selector:
     matchLabels:
-      app: my-app
+      app: kishq-app
   template:
     metadata:
       labels:
-        app: my-app
+        app: kishq-app
     spec:
       containers:
-      - name: my-app
+      - name: kishq-app
         image: iamsaikishore/image-name:latest        
         ports:
         - containerPort: 8080        
@@ -37,13 +37,13 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: my-app-service
+  name: kishq-app-service
   labels:
-    app: my-app
+    app: kishq-app
 spec:
   type: NodePort
   selector:
-    app: my-app
+    app: kishq-app
   ports:
   - name: http
     port: 80
