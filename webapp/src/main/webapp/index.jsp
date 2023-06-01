@@ -33,6 +33,15 @@
         background-color: #993399;
       }
     </style>
+    
+    <script>
+      document.addEventListener("DOMContentLoaded", function() {
+        var hostname = window.location.hostname;
+        var hostnameElement = document.getElementById("hostname");
+        hostnameElement.textContent = hostname;
+      });
+    </script>
+    
   </head>
   <body>
     <h1> Hurrayyyyyyyyy! We have deployed the application successfully. </h1>
@@ -49,8 +58,5 @@
     <div class="color-box green"></div>
     <div class="color-box yellow"></div>
     <div class="color-box purple"></div>
-    <script>
-      var hostname = window.location.hostname;
-       document.getElementById("hostname").innerHTML = hostname;
-    </script>
+
  </html>
