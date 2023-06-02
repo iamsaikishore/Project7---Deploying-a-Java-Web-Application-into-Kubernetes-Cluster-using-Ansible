@@ -351,6 +351,8 @@ P: admin
 
 New Pass: admin@123                                                   
 
+
+[My Blog](https://iamsaikishore.hashnode.dev/deploying-a-java-web-application-into-kubernetes-cluster-using-ansible)
                                                    
                                                    
                                                    
